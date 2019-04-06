@@ -1,11 +1,7 @@
 <?php
-session_start();
+
 $view = new stdClass();
 $view->pageTitle = "login Page";
-
-if (isset($_SESSION['email']) ) {
-    header("location: index.php");
-}
 
 require_once("Models/UsersDataSet.php");
 $userDataSet = new UsersDataSet();
