@@ -30,11 +30,22 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active color-white">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="../../index.php">Home</a>
                 </li>
                 <li class="nav-item color-white">
                     <a class="nav-link" href="#">Other things</a>
                 </li>
+                <?php if (isset($_SESSION['email'])) {?>
+                <li>
+                    <a class="nav-link" href="#">Suggested Itinerary</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="../../treasureHunt.php">Treasure Hunt</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">Emergency Services</a>
+                </li>
+                <?php }?>
             </ul>
 
             <?php

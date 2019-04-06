@@ -1,0 +1,12 @@
+<?php require_once ('template/header.phtml');?>
+<div class="card" style="margin-left: 10px; margin-top: 10px; margin-right: 10px;">
+    <h3 class="card-header bg-light">Hi <?php echo $_SESSION['email']?></h3>
+    <div class="card-body">
+        <p class="card-text"><strong>Holiday Type: </strong> <?php echo $_SESSION['user_details']['typeOfHoliday']?></p>
+        <p class="card-text"><strong>Destination: </strong> <?php echo $_SESSION['user_details']['destination']?></p>
+        <p class="card-text"><strong>Food Preference: </strong> <?php echo $_SESSION['user_details']['foodPreference']?></p>
+        <p class="card-text"><strong>Duration: </strong> <?php echo $_SESSION['user_details']['duration']?></p>
+        <p class="card-text"><strong>Hobbies: </strong> <?php echo $_SESSION['user_details']['hobbies']?></p>
+    </div>
+</div>
+<?php require_once ('template/footer.phtml');?>

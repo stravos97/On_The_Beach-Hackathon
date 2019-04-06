@@ -25,7 +25,7 @@ if (isset($_POST["login-submit"])) {
 
     if (count($user) == 1) {                        //checking to see if the user exists
         $_SESSION['email'] = $typedUsername;        //session with username
-        header('location: index.php');
+        header('location: typeOfHoliday.php');
     } else {
         array_push($view->errors, "Username/Password did not match. Please try again!");
     }
