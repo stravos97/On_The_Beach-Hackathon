@@ -1,20 +1,20 @@
 <?php require_once('template/header.phtml'); ?>
-<form class="typeOfForm col-4 background-beach-gradient" style="border-radius: 10px;">
+<form class="typeOfForm col-4 background-beach-gradient" style="border-radius: 10px;" action="../typeOfHoliday.php" method="post">
     <div class="form-group" style="padding-top: 20px;">
     <label>
         Type of Holiday
     </label>
-    <select class="form-control">
-        <option>
-            Adventurer
+    <select class="form-control" name="typeOfHoliday">
+        <option value="Adventure">
+            Adventure
         </option>
-        <option>
+        <option value="Family">
             Family
         </option>
-        <option>
+        <option value="Relaxed">
             Relaxed
         </option>
-        <option>
+        <option value="Budget">
             Budget
         </option>
     </select>
