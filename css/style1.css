@@ -13,6 +13,16 @@
     margin-left: 40px;
 }
 
+.typeOfForm {
+    margin-left: 35%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.multipleControl {
+    margin-bottom: 10px;
+}
+
 .bg-1 {
     background: url("../img/maincampsite1.jpg") center;
     -webkit-background-size: cover;
