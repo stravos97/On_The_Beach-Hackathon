@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Google Maps Multiple Markers</title>
+
+    <!-- AIzaSyA6tBNMQzpIzDYa1uTth5NkeVgbNo5YLsA  -->
+
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6tBNMQzpIzDYa1uTth5NkeVgbNo5YLsA&callback=initialize"
+            type="text/javascript"></script>
+
+</head>
+<body>
+
+
+
+
+<div id="map" style="width: 500px; height: 400px;"></div>
+
+
+<script>
+
+
+    function initialize() {
+
+
+        var map;
+
+        // get map marker data from the view object locations field and convert it
+        // from a php array to json arrary so it can be read in js below
+        var locations = <?php echo json_encode($view->locations); ?>;
+
+        // make a new map object and attached it to the display element
+        var map = new google.maps.Map(
+            document.getElementById('map'),
+            {
+                zoom: 10, center: new google.maps.LatLng(-33.92, 151.25),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+        );
+
+
+        var marker, i;
+
+        // make jsut one info window so that you only see one at a time when a marker is clicked
+        var infowindow = new google.maps.InfoWindow();
+
+        // go through the array of location data and create a marker and info window
+        // for each location adding meta data to the info window
+
+        for (i = 0; i < locations.length; i++)
+           {
+               // pull the marker data into named variables
+               var name = locations[i][0];
+               var lat = locations[i][1];
+               var long = locations[i][2];
+               var photo = locations[i][4];
+               var id = locations[i][3];
+               // create a latlng object for the marker
+               latlngset = new google.maps.LatLng(lat, long);
+               // add the marker
+               var marker = new google.maps.Marker({
+                    map: map, title: name , position: latlngset
+               });
+
+               // set formatted content for this marker
+               var content = "<div><img src='photos/" + photo + "'><p>" + name + "</p><p><a href='/showbeach.php?id=" + id + "'>Click for more info</a></p><div>";
+               // add a click event to this marker (and each one) and apply the content
+               google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
+                    return function() {
+                        infowindow.setContent(content);
+                        infowindow.open(map,marker);
+                    };
+               })(marker,content,infowindow));
+
+            }
+
+       }
+
+
+</script>
+
+
+
+
+
+</body>
+
