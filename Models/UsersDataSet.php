@@ -14,9 +14,7 @@ class UsersDataSet
 
     public function fetchOneUser($email, $password) {
         $sqlQuery = "SELECT * FROM users WHERE email='$email' and password = '$password' ";
-        echo $sqlQuery;
         $statement = $this->_dbHandle->prepare($sqlQuery); // prepare a PDO statement
-        //var_dump($statement);
         $statement->execute(); // execute the PDO statement
 
         $user = [];
