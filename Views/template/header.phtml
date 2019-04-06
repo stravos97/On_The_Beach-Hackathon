@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--    <title>--><?php //echo $view->pageTitle; ?><!--</title>-->
+    <!--    <title>--><?php session_start(); //echo $view->pageTitle; ?><!--</title>-->
     <link rel="icon" href="images/logo.png">
     <!--    <meta name="theme-color" content="#48d594">-->
     <meta charset="UTF-8">
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="js/bootstrap.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtftYetmR9Ia4te22GNPsU8RM8cwdfvvc&callback=initMap" type="text/javascript"></script>
 </head>
 <body>
 
@@ -37,7 +38,7 @@
                 </li>
                 <?php if (isset($_SESSION['email'])) {?>
                 <li>
-                    <a class="nav-link" href="#">Suggested Itinerary</a>
+                    <a class="nav-link" href="../../itenrary.php">Suggested Itinerary</a>
                 </li>
                 <li>
                     <a class="nav-link" href="../../treasureHunt.php">Treasure Hunt</a>
