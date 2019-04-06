@@ -38,7 +38,7 @@
             </ul>
 
             <?php
-            if (isset($_SESSION['userID'])) {
+            if (isset($_SESSION['email'])) {
 
                 echo '<div class="dropdown margin-login margin-r-15">
                            
@@ -48,7 +48,7 @@
             }
             else
             {
-                echo '<a class="btn my-2 my-sm-0" style="border-color:#fedc07; color:#fedc07" href="login.php">Login</a>';
+                echo '<a class="btn my-2 my-sm-0" style="border-color:#fedc07; color:#fedc07" href="login.php">Login</a>';;
             }
             ?>
 

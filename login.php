@@ -12,12 +12,12 @@ $userDataSet = new UsersDataSet();
 
 $view->errors = array();
 
-if (isset($_POST["login"])) {
+if (isset($_POST["login-submit"])) {
 
-    if (isset($_POST["username"])) {
+    if (isset($_POST["mail"])) {
         $typedUsername = $_POST["mail"];
     }
-    if (isset($_POST["password"])) {
+    if (isset($_POST["pwd"])) {
         $typedPassword = $_POST["pwd"];
     }
 
