@@ -101,16 +101,19 @@
 }
 
 .login-form-body {
-    width: 40%;
+    width: 35%;
     margin-right: auto;
     margin-left: auto;
     margin-top: 3%;
     margin-bottom: 3%;
     text-align: center;
+    border-radius: 20px;
 }
 
 .login-form-header {
-    margin-bottom: 5%;
+    margin-bottom: 15%;
+    font-size: 52px;
+    margin-top: 15%;
 }
 
 .login-form {
@@ -321,4 +324,32 @@
     .search-dropdown-box {
         width: 73%;
     }
+}
+
+
+
+/* On the beach hack camp */
+.beach-blue {
+    background-color: #76c2ff ;
+}
+
+.color-white {
+    color: white;
+}
+
+.beach-yellow {
+    border-color: #fedc07;
+}
+
+.background-beach-gradient {
+    background-color: #08AEEA;
+    background-image: linear-gradient(0deg, #76c2ff 15%, #fedc07 85%);
+}
+
+.wallpaper-img {
+    width: 100%;
+    height: 92vh;
+    /*background-image: url(../images/wallpaper.jpg);*/
+    z-index: -2;
+    position: absolute;
 }
