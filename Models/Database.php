@@ -24,7 +24,7 @@ class Database {
         $username ='root';
         $password = '';
         $host = 'localhost';
-        $dbName = 'onthebeachhack';
+        $dbName = 'hackathon';
 
         if(self::$_dbInstance === null) { //checks if the PDO exists
             // creates new instance if not, sending in connection info
