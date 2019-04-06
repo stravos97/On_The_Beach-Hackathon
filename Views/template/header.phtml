@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!--    <title>--><?php //echo $view->pageTitle; ?><!--</title>-->
-    <link rel="icon" href="img/logo.png">
+    <link rel="icon" href="images/logo.png">
     <!--    <meta name="theme-color" content="#48d594">-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,9 +19,9 @@
 <body>
 
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light beach-blue">
         <div class="header-logo">
-            <a href="index.php"><img src="img/logo.png" style="width: 100px" /></a>
+            <a href="index.php"><img src="images/logo.png" style="width: 100px" /></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-expanded="false" aria-controls="navbarTogglerDemo02" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,11 +29,11 @@
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
+                <li class="nav-item active color-white">
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="campsitesList.php">Other things</a>
+                <li class="nav-item color-white">
+                    <a class="nav-link" href="#">Other things</a>
                 </li>
             </ul>
 
@@ -41,20 +41,14 @@
             if (isset($_SESSION['userID'])) {
 
                 echo '<div class="dropdown margin-login margin-r-15">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Profile
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                '.(isset($_SESSION['admin'])==true ? '<a class="dropdown-item" href="#">Campsite Admin Page</a>' : '' ).'
-                                '.(isset($_SESSION['admin'])==true ? '<a class="dropdown-item" href="#">User Admin Page</a>' : '' ).'
-                            </div>
-                          </div>';
+                           
+                      </div>';
 
-                echo '<a class="btn btn-outline-success my-2 my-sm-0 margin-lr-30" href="logout.php">Logout</a>';
+                echo '<a class="btn my-2 my-sm-0 margin-lr-30" style="border-color:#fedc07; color:#fedc07" href="logout.php">Logout</a>';
             }
             else
             {
-                echo '<a class="btn btn-outline-success my-2 my-sm-0 " href="login.php">Login</a>';
+                echo '<a class="btn my-2 my-sm-0" style="border-color:#fedc07; color:#fedc07" href="login.php">Login</a>';
             }
             ?>
 

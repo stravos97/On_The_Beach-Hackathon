@@ -2,6 +2,43 @@
     require "Views/template/header.phtml";
 ?>
 
-<div>
-    <h2>hi</h2>
+<div class="card login-form-body background-beach-gradient" style="border-color: white; color: white">
+    <div class="card-body">
+        <h1 class="login-form-header">Login</h1>
+
+        <form class="login-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <input class="form-control mr-sm-2 margin-bit-1" type="text" name="mail" placeholder="Email" required>
+            <input class="form-control mr-sm-2 margin-bit-1" type="password" name="pwd" placeholder="Password" required>
+
+            <div class="col-auto my-1">
+                <div class="custom-control custom-checkbox mr-sm-2">
+                    <input type="checkbox" class="custom-control-input margin-bit-1" id="customControlAutosizing">
+                    <label class="custom-control-label" for="customControlAutosizing">Keep me signed in.</label>
+                </div>
+            </div>
+
+            <div class="margin-bit-3">
+                <button class="btn btn-outline-success my-2 my-sm-0 margin-bit-1" type="submit" name="login-submit">
+                    Login
+                </button>
+            </div>
+        </form>
+
+        <a class="right" href="#">Forgot Password</a>
+
+        <?php
+        if (!empty($view->login_error_message)) {
+            echo '<div class="alert alert-danger"><strong>Error: </strong> ' . $view->login_error_message . '</div>';
+        }
+        ?>
+
+    </div>
+    <div class="login-hr">
+        <hr class="login-hr"/>
+    </div>
+
+    <div class="login-signup margin-bit-2">
+        <a class="btn btn-primary my-1 " href="signup.php">Or create an account here</a>
+    </div>
+
 </div>
