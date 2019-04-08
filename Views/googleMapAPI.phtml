@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Google Map API</title>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtftYetmR9Ia4te22GNPsU8RM8cwdfvvc&callback=initMap" type="text/javascript"></script>
+
+    <script>
+        var locations = [
+            ["Ise Sueyoshi", "Soups", 35.658667, 139.7213043, 'logo.png'],
+            ["Tapas Molecular Bar","Sushi - unique", 35.6869135, 139.7705901, 'logo.png'],
+            ["Nabezo", "Vegetarian", 35.6910035, 139.7004164, 'logo.png'],
+            ["Teppan Baby Shinjuku", "Sushi", 35.6940334, 139.6990221, 'logo.png'],
+            ["Asakusa Okonomiyaki Sometaro", "Vegetarian", 35.7119483, 139.7887391, 'logo.png'],
+            ["Ichiran, Shibuya", "quick bite", 35.6611282, 139.698796, 'logo.png'],
+            ["Girandole", "Vegetarian - french", 35.6855151, 139.6886437, 'logo.png'],
+            ["TOKYO ONE PIECE TOWER", 35.6585928, 139.7432527, 'logo.png'],
+            ["Asakusa Guided Tour",35.7147651, 139.7944666, 'logo.png'],
+            ["Hozomon", 35.7139299,	139.7944431, 'logo.png'],
+            ["Tokyo Skytree", 35.7100627,	139.8085117, 'logo.png'],
+            ["Keio Plaza Hotel in Shinjuku", 35.6900509,	139.6921749, 'logo.png'],
+            ["Robot Restaurant Kabukicho", 35.6943187,	139.7006545, 'logo.png'],
+            ["Imperial Palace Hama Rikyu Gardens", 35.6597374,	139.7613038, 'logo.png'],
+            ["Roppongi Hills, Shop & Restaurant", 35.659737,	139.7548487, 'logo.png'],
+            ["Mount Fuji Yamanakako Onsen Benifujinoyu", 35.4301518,	138.8403026, 'logo.png'],
+            ["Kegon Falls Nikko Tosho-gu", 36.7571715,	139.5977953, 'logo.png'],
+            ["Tokyo Tower Imperial Palace", 35.685175,	139.7506108, 'logo.png'],
+
+        ];
+    </script>
+</head>
+<body>
+
+<div id="map" style="width: 500px; height: 400px;"></div>
+<p id="lat"></p>
+<p id="long"></p>
+<button id="showMap">Show My location on Map</button>
+
+<h3>Points: 1000</h3>
+
+<script>
+    var latitude = document.getElementById("lat");
+    var longitude = document.getElementById("long");
+    var mapLatitude, mapLongitude;
+    function do_something(lat, long) {
+        // latitude.innerHTML = "Latitude is: " + lat;
+        // longitude.innerHTML = "longitude is: " + long;
+        mapLatitude = lat;
+        mapLongitude = long;
+    }
+    function geo_success(position) {
+        do_something(position.coords.latitude, position.coords.longitude);
+    }
+    function geo_error(error) {
+        alert('ERROR(' + error.code + '): ' + error.message);
+    }
+    var geo_options = {
+        enableHighAccuracy: true,
+        maximumAge        : 30000,
+        timeout           : 27000
+    };
+    var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
+    var map;
+    function initMap() {
+        //Show the map
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10, center: new google.maps.LatLng(35.65, 139.72),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+        //Show the pointers
+
+
+        //var count
+        //console.log(count);
+
+        for (i = 0; i<locations.length; i++) {
+
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][2] , locations[i][3]), map: map, title: locations[i][0]
+            });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    let photo = locations[i][4];
+                    console.log(photo);
+                    let popUpHTML =
+                        "<div>" +
+                        "<img src='../images/logo.png'>" +
+                        "<p>" + name + "</p>" +
+                        "<p>" +
+                        "<form>" +
+                        '<div class="form-group">' +
+                        '<label for="imagesUpload">Upload image</label>' +
+                        '<input type="file" class="form-control-file" id="imagesUpload" name="image">' +
+                        '</div>' +
+                        "</form>" +
+                        "<button type='submit' name=''>Submit</button>" +
+                        "</p>" +
+                        "<div>";
+                    infowindow.setContent(popUpHTML); /* just displays place name */
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+
+        }
+    }
+
+    function showMyLocation() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15, center: new google.maps.LatLng(mapLatitude, mapLongitude),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(mapLatitude, mapLongitude), map: map, icon: {
+                url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            }
+        });
+    }
+    document.getElementById("showMap").addEventListener("click", showMyLocation, false);
+</script>
+
+</body>
+</html>
